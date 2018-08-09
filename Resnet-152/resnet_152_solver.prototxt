@@ -1,8 +1,8 @@
-net: "resnet_152/resnet_152.prototxt"
+net: "models/Resnet-152/resnet_152-train_val.prototxt"
 #test_iter: 6000
 #test_interval: 50000
 #test_initialization: true
-display: 6000
+display: 200
 average_loss: 6000
 base_lr: 0.1
 lr_policy: "step"
@@ -13,5 +13,5 @@ max_iter: 3200000
 momentum: 0.9
 weight_decay: 0.0001
 snapshot: 200000
-snapshot_prefix: "/home/heyihui/ceph/resnet-imagenet-caffe/resnet_152/snapshot/resnet_152"
+snapshot_prefix: "models/Resnet-152/resnet_152"
 solver_mode: GPU
