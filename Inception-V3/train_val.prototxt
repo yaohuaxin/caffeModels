@@ -15,7 +15,7 @@ layer {
     mean_value: 123
   }
   data_param {
-    source: "/mnt/disk/ILSVRC2012/300px_ilsvrc12_train_lmdb"
+    source: "examples/imagenet/ilsvrc12_train_lmdb-300x300"
     batch_size: 22
     backend: LMDB
   }
@@ -36,45 +36,7 @@ layer {
     mean_value: 123
   }
   data_param {
-    source: "/mnt/disk/ILSVRC2012/300px_ilsvrc12_val_lmdb"
-    batch_size: 5
-    backend: LMDB
-  }
-}
-layer {
-  name: "data"
-  type: "Data"
-  top: "data"
-  top: "label"
-  include {
-    phase: TRAIN
-  }
-  transform_param {
-    mirror: true
-    crop_size: 299
-    mean_file: "/home/smichalowski/DIGITS/digits/jobs/20160627-223013-e18a/mean.binaryproto"
-  }
-  data_param {
-    source: "/home/smichalowski/DIGITS/digits/jobs/20160627-223013-e18a/train_db"
-    batch_size: 22
-    backend: LMDB
-  }
-}
-layer {
-  name: "data"
-  type: "Data"
-  top: "data"
-  top: "label"
-  include {
-    phase: TEST
-  }
-  transform_param {
-    mirror: false
-    crop_size: 299
-    mean_file: "/home/smichalowski/DIGITS/digits/jobs/20160627-223013-e18a/mean.binaryproto"
-  }
-  data_param {
-    source: "/home/smichalowski/DIGITS/digits/jobs/20160627-223013-e18a/val_db"
+    source: "examples/imagenet/ilsvrc12_val_lmdb-300x300"
     batch_size: 5
     backend: LMDB
   }
@@ -105,28 +67,10 @@ layer {
   type: "BatchNorm"
   bottom: "conv_conv2d"
   top: "conv_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -161,28 +105,10 @@ layer {
   type: "BatchNorm"
   bottom: "conv_1_1_conv2d"
   top: "conv_1_1_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -217,28 +143,10 @@ layer {
   type: "BatchNorm"
   bottom: "conv_2_2_conv2d"
   top: "conv_2_2_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -285,28 +193,10 @@ layer {
   type: "BatchNorm"
   bottom: "conv_3_3_conv2d"
   top: "conv_3_3_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -341,28 +231,10 @@ layer {
   type: "BatchNorm"
   bottom: "conv_4_4_conv2d"
   top: "conv_4_4_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -409,28 +281,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_conv_conv2d"
   top: "mixed_conv_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -465,28 +319,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_tower_conv_conv2d"
   top: "mixed_tower_conv_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -521,28 +357,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_tower_conv_1_conv2d"
   top: "mixed_tower_conv_1_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -577,28 +395,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_tower_1_conv_conv2d"
   top: "mixed_tower_1_conv_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -633,28 +433,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_tower_1_conv_1_conv2d"
   top: "mixed_tower_1_conv_1_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -689,28 +471,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_tower_1_conv_2_conv2d"
   top: "mixed_tower_1_conv_2_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -757,28 +521,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_tower_2_conv_conv2d"
   top: "mixed_tower_2_conv_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -825,28 +571,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_1_conv_conv2d"
   top: "mixed_1_conv_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -881,28 +609,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_1_tower_conv_conv2d"
   top: "mixed_1_tower_conv_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -937,28 +647,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_1_tower_conv_1_conv2d"
   top: "mixed_1_tower_conv_1_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -993,28 +685,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_1_tower_1_conv_conv2d"
   top: "mixed_1_tower_1_conv_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -1049,28 +723,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_1_tower_1_conv_1_conv2d"
   top: "mixed_1_tower_1_conv_1_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -1105,28 +761,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_1_tower_1_conv_2_conv2d"
   top: "mixed_1_tower_1_conv_2_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -1173,28 +811,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_1_tower_2_conv_conv2d"
   top: "mixed_1_tower_2_conv_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -1241,28 +861,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_2_conv_conv2d"
   top: "mixed_2_conv_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -1297,28 +899,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_2_tower_conv_conv2d"
   top: "mixed_2_tower_conv_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -1353,28 +937,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_2_tower_conv_1_conv2d"
   top: "mixed_2_tower_conv_1_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -1409,28 +975,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_2_tower_1_conv_conv2d"
   top: "mixed_2_tower_1_conv_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -1465,28 +1013,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_2_tower_1_conv_1_conv2d"
   top: "mixed_2_tower_1_conv_1_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -1521,28 +1051,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_2_tower_1_conv_2_conv2d"
   top: "mixed_2_tower_1_conv_2_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -1589,28 +1101,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_2_tower_2_conv_conv2d"
   top: "mixed_2_tower_2_conv_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -1657,28 +1151,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_3_conv_conv2d"
   top: "mixed_3_conv_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -1713,28 +1189,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_3_tower_conv_conv2d"
   top: "mixed_3_tower_conv_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -1769,28 +1227,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_3_tower_conv_1_conv2d"
   top: "mixed_3_tower_conv_1_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -1825,28 +1265,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_3_tower_conv_2_conv2d"
   top: "mixed_3_tower_conv_2_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -1904,28 +1326,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_4_conv_conv2d"
   top: "mixed_4_conv_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -1960,28 +1364,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_4_tower_conv_conv2d"
   top: "mixed_4_tower_conv_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -2018,28 +1404,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_4_tower_conv_1_conv2d"
   top: "mixed_4_tower_conv_1_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -2076,28 +1444,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_4_tower_conv_2_conv2d"
   top: "mixed_4_tower_conv_2_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -2132,28 +1482,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_4_tower_1_conv_conv2d"
   top: "mixed_4_tower_1_conv_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -2190,28 +1522,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_4_tower_1_conv_1_conv2d"
   top: "mixed_4_tower_1_conv_1_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -2248,28 +1562,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_4_tower_1_conv_2_conv2d"
   top: "mixed_4_tower_1_conv_2_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -2306,28 +1602,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_4_tower_1_conv_3_conv2d"
   top: "mixed_4_tower_1_conv_3_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -2364,28 +1642,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_4_tower_1_conv_4_conv2d"
   top: "mixed_4_tower_1_conv_4_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -2432,28 +1692,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_4_tower_2_conv_conv2d"
   top: "mixed_4_tower_2_conv_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -2500,28 +1742,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_5_conv_conv2d"
   top: "mixed_5_conv_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -2556,28 +1780,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_5_tower_conv_conv2d"
   top: "mixed_5_tower_conv_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -2614,28 +1820,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_5_tower_conv_1_conv2d"
   top: "mixed_5_tower_conv_1_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -2672,28 +1860,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_5_tower_conv_2_conv2d"
   top: "mixed_5_tower_conv_2_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -2728,28 +1898,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_5_tower_1_conv_conv2d"
   top: "mixed_5_tower_1_conv_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -2786,28 +1938,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_5_tower_1_conv_1_conv2d"
   top: "mixed_5_tower_1_conv_1_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -2844,28 +1978,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_5_tower_1_conv_2_conv2d"
   top: "mixed_5_tower_1_conv_2_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -2902,28 +2018,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_5_tower_1_conv_3_conv2d"
   top: "mixed_5_tower_1_conv_3_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -2960,28 +2058,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_5_tower_1_conv_4_conv2d"
   top: "mixed_5_tower_1_conv_4_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -3028,28 +2108,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_5_tower_2_conv_conv2d"
   top: "mixed_5_tower_2_conv_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -3096,28 +2158,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_6_conv_conv2d"
   top: "mixed_6_conv_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -3152,28 +2196,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_6_tower_conv_conv2d"
   top: "mixed_6_tower_conv_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -3210,28 +2236,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_6_tower_conv_1_conv2d"
   top: "mixed_6_tower_conv_1_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -3268,28 +2276,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_6_tower_conv_2_conv2d"
   top: "mixed_6_tower_conv_2_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -3324,28 +2314,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_6_tower_1_conv_conv2d"
   top: "mixed_6_tower_1_conv_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -3382,28 +2354,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_6_tower_1_conv_1_conv2d"
   top: "mixed_6_tower_1_conv_1_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -3440,28 +2394,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_6_tower_1_conv_2_conv2d"
   top: "mixed_6_tower_1_conv_2_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -3498,28 +2434,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_6_tower_1_conv_3_conv2d"
   top: "mixed_6_tower_1_conv_3_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -3556,28 +2474,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_6_tower_1_conv_4_conv2d"
   top: "mixed_6_tower_1_conv_4_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -3624,28 +2524,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_6_tower_2_conv_conv2d"
   top: "mixed_6_tower_2_conv_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -3692,28 +2574,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_7_conv_conv2d"
   top: "mixed_7_conv_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -3748,28 +2612,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_7_tower_conv_conv2d"
   top: "mixed_7_tower_conv_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -3806,28 +2652,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_7_tower_conv_1_conv2d"
   top: "mixed_7_tower_conv_1_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -3864,28 +2692,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_7_tower_conv_2_conv2d"
   top: "mixed_7_tower_conv_2_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -3920,28 +2730,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_7_tower_1_conv_conv2d"
   top: "mixed_7_tower_1_conv_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -3978,28 +2770,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_7_tower_1_conv_1_conv2d"
   top: "mixed_7_tower_1_conv_1_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -4036,28 +2810,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_7_tower_1_conv_2_conv2d"
   top: "mixed_7_tower_1_conv_2_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -4094,28 +2850,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_7_tower_1_conv_3_conv2d"
   top: "mixed_7_tower_1_conv_3_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -4152,28 +2890,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_7_tower_1_conv_4_conv2d"
   top: "mixed_7_tower_1_conv_4_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -4220,28 +2940,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_7_tower_2_conv_conv2d"
   top: "mixed_7_tower_2_conv_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -4288,28 +2990,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_8_tower_conv_conv2d"
   top: "mixed_8_tower_conv_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -4344,28 +3028,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_8_tower_conv_1_conv2d"
   top: "mixed_8_tower_conv_1_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -4400,28 +3066,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_8_tower_1_conv_conv2d"
   top: "mixed_8_tower_1_conv_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -4458,28 +3106,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_8_tower_1_conv_1_conv2d"
   top: "mixed_8_tower_1_conv_1_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -4516,28 +3146,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_8_tower_1_conv_2_conv2d"
   top: "mixed_8_tower_1_conv_2_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -4572,28 +3184,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_8_tower_1_conv_3_conv2d"
   top: "mixed_8_tower_1_conv_3_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -4652,28 +3246,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_9_conv_conv2d"
   top: "mixed_9_conv_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -4708,28 +3284,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_9_tower_conv_conv2d"
   top: "mixed_9_tower_conv_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -4766,28 +3324,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_9_tower_mixed_conv_conv2d"
   top: "mixed_9_tower_mixed_conv_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -4824,28 +3364,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_9_tower_mixed_conv_1_conv2d"
   top: "mixed_9_tower_mixed_conv_1_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -4880,28 +3402,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_9_tower_1_conv_conv2d"
   top: "mixed_9_tower_1_conv_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -4936,28 +3440,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_9_tower_1_conv_1_conv2d"
   top: "mixed_9_tower_1_conv_1_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -4994,28 +3480,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_9_tower_1_mixed_conv_conv2d"
   top: "mixed_9_tower_1_mixed_conv_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -5052,28 +3520,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_9_tower_1_mixed_conv_1_conv2d"
   top: "mixed_9_tower_1_mixed_conv_1_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -5120,28 +3570,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_9_tower_2_conv_conv2d"
   top: "mixed_9_tower_2_conv_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -5191,28 +3623,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_10_conv_conv2d"
   top: "mixed_10_conv_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -5247,28 +3661,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_10_tower_conv_conv2d"
   top: "mixed_10_tower_conv_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -5305,28 +3701,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_10_tower_mixed_conv_conv2d"
   top: "mixed_10_tower_mixed_conv_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -5363,28 +3741,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_10_tower_mixed_conv_1_conv2d"
   top: "mixed_10_tower_mixed_conv_1_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -5419,28 +3779,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_10_tower_1_conv_conv2d"
   top: "mixed_10_tower_1_conv_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -5475,28 +3817,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_10_tower_1_conv_1_conv2d"
   top: "mixed_10_tower_1_conv_1_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -5533,28 +3857,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_10_tower_1_mixed_conv_conv2d"
   top: "mixed_10_tower_1_mixed_conv_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -5591,28 +3897,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_10_tower_1_mixed_conv_1_conv2d"
   top: "mixed_10_tower_1_mixed_conv_1_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
@@ -5659,28 +3947,10 @@ layer {
   type: "BatchNorm"
   bottom: "mixed_10_tower_2_conv_conv2d"
   top: "mixed_10_tower_2_conv_conv2d_bn"
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
-  param {
-    lr_mult: 0.0
-  }
   batch_norm_param {
     use_global_stats: false
     moving_average_fraction: 0.9997
     eps: 0.001
-    scale_filler {
-      type: "constant"
-      value: 1.0
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.0
-    }
-    engine: CUDNN
   }
 }
 layer {
