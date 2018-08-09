@@ -1,4 +1,4 @@
-net: "models/Inception_V3/train_val.prototxt"
+net: "models/Inception-V3/train_val.prototxt"
 test_iter: 10000
 test_interval: 6500
 test_initialization: false
@@ -14,6 +14,6 @@ max_iter: 666221
 weight_decay: 0.0004
 clip_gradients: 80
 snapshot: 52000
-snapshot_prefix: "models/Inception_V3/googlenet_v3"
+snapshot_prefix: "models/Inception-V3/Inception-V3"
 solver_mode: GPU
 device_id: 0
