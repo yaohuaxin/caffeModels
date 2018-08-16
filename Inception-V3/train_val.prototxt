@@ -16,7 +16,7 @@ layer {
   }
   data_param {
     source: "examples/imagenet/ilsvrc12_train_lmdb-300x300"
-    batch_size: 22
+    batch_size: 32
     backend: LMDB
   }
 }
